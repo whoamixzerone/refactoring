@@ -67,9 +67,14 @@ public class StringCalculator {
         if(m.find()) {
             String customDelimeter = m.group(1);
             return m.group(2).split(customDelimeter);
-        } else {
+        }
+        // 굳이 else문이 필요 없는 경우에는 사용하지 않도록 한다.
+        /*
+        else {
             return text.split(",|:");
         }
+        */
+        return text.split(",|:");
     }
 
     private int[] toInts(String[] values) {
