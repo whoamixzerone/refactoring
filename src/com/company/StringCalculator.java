@@ -27,7 +27,7 @@ public class StringCalculator {
         return Integer.parseInt(text);
     }
 
-    /*
+    /*계
        sum 메서드의 경우 메서드안에서 2가지의 일을 수행하고 있다.
        1. sum
        2. 문자열을 숫자형으로 형변환환
@@ -48,6 +48,19 @@ public class StringCalculator {
         }
 
         return sum_before(split(text));
+    }
+
+    // 리팩토링 세단계 진행(인덴트가 음수 판단으로 인해 들어감)
+    private int[] toInts_before(String[] values) {
+        int[] numbers = new int[values.length];
+        for(int i=0; i<values.length; ++i) {
+            int number = Integer.parseInt(values[i]);
+            if(number < 0) {
+                throw new RuntimeException();
+            }
+            numbers[i] = number;
+        }
+        return numbers;
     }
 
     public int add(String text) {
@@ -80,9 +93,17 @@ public class StringCalculator {
     private int[] toInts(String[] values) {
          int[] numbers = new int[values.length];
          for(int i=0; i<values.length; ++i) {
-             numbers[i] = Integer.parseInt(values[i]);
+             numbers[i] = toPositivie(values[i]);
          }
          return numbers;
+    }
+
+    private int toPositivie(String value) {
+        int number = Integer.parseInt(value);
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+        return number;
     }
 
     private int sum(int[] numbers) {
