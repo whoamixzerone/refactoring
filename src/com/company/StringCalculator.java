@@ -2,36 +2,81 @@ package com.company;
 
 public class StringCalculator {
 
+    /*
+        연습 코드이기때문에 극단적으로 리팩토링한다.
+        메서드는 한 가지의 일만 수행하게끔 한다.
+     */
+
+    // 리팩토링 전 add 메서드
+    public int add_before(String text) {
+        if(text == null || text.isEmpty()) {
+            return 0;
+        }
+
+        if(text.contains(",")) {
+            String[] values = text.split(",");
+            int sum = 0;
+            for (String value : values) {
+                sum += Integer.parseInt(value);
+            }
+        }
+
+        return Integer.parseInt(text);
+    }
+
+    /*
+       sum 메서드의 경우 메서드안에서 2가지의 일을 수행하고 있다.
+       1. sum
+       2. 문자열을 숫자형으로 형변환환
+    */
+    // 리팩토링 한단계 진행
+     private int sum_before(String[] values) {
+        int sum = 0;
+        for (String value : values) {
+            sum += Integer.parseInt(value);
+        }
+        return sum;
+    }
+
+    // 리팩토링 두단계 진행(sum 메서드 분리해서 toInts() 생성)
+    public int add_before2(String text) {
+        if(isBlank(text)) {
+            return 0;
+        }
+
+        return sum_before(split(text));
+    }
+
     public int add(String text) {
-        if(text == null || text.isEmpty()) {
+        if(isBlank(text)) {
             return 0;
         }
 
-        String[] values = text.split(",");
+        return sum(toInts(split(text)));
+    }
+
+    private boolean isBlank(String text) {
+        return text == null || text.isEmpty();
+    }
+
+    private String[] split(String text) {
+        return text.split(",");
+    }
+
+    private int[] toInts(String[] values) {
+         int[] numbers = new int[values.length];
+         for(int i=0; i<values.length; ++i) {
+             numbers[i] = Integer.parseInt(values[i]);
+         }
+         return numbers;
+    }
+
+    private int sum(int[] numbers) {
         int sum = 0;
-        for (String value : values) {
-            sum += Integer.parseInt(value);
+        for (int number : numbers) {
+            sum += number;
         }
         return sum;
     }
 
-    // 1단계 리팩토링
-    public int add_refact1(String text) {
-        if(text == null || text.isEmpty()) {
-            return 0;
-        }
-
-        // 숫자 하나일 때 "," 없이 split 해도 숫자 하나를 반환하므로
-        // if, 숫자형으로 형변환하고 반환하는게 필요없음
-        //if(text.contains(",")) {
-        String[] values = text.split(",");
-        int sum = 0;
-        for (String value : values) {
-            sum += Integer.parseInt(value);
-        }
-        return sum;
-        //}
-
-        //return Integer.parseInt(text);
-    }
 }
