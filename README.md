@@ -6,6 +6,6 @@
 ## 출처
 동영상 강의는 총 3편입니다.  
 
-<a href="https://www.youtube.com/watch?v=08YYZ0acYNE" target="_blank">문자열 덧셈 계산기 구현 및 리팩토링 1단계</a>  
-<a href="https://www.youtube.com/watch?v=AAMap-pXXN4" target="_blank">문자열 덧셈 계산기 구현 및 리팩토링 2단계</a>  
-<a href="https://www.youtube.com/watch?v=weE5PVX9D60" target="_blank">문자열 덧셈 계산기 구현 및 리팩토링 3단계</a>
+<a href='https://www.youtube.com/watch?v=08YYZ0acYNE' target='_blank'>문자열 덧셈 계산기 구현 및 리팩토링 1단계</a>  
+<a href='https://www.youtube.com/watch?v=AAMap-pXXN4' target='_blank'>문자열 덧셈 계산기 구현 및 리팩토링 2단계</a>  
+<a href='https://www.youtube.com/watch?v=weE5PVX9D60' target='_blank'>문자열 덧셈 계산기 구현 및 리팩토링 3단계</a>
