@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
     /*
@@ -60,7 +63,13 @@ public class StringCalculator {
     }
 
     private String[] split(String text) {
-        return text.split(",");
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if(m.find()) {
+            String customDelimeter = m.group(1);
+            return m.group(2).split(customDelimeter);
+        } else {
+            return text.split(",|:");
+        }
     }
 
     private int[] toInts(String[] values) {
